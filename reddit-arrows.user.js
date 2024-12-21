@@ -10,7 +10,7 @@
 // @downloadURL  https://github.com/ItsRumo/userscripts/master/reddit-arrows.user.js
 // @updateURL    https://github.com/ItsRumo/userscripts/master/reddit-arrows.user.js
 // @match        http*://*.reddit.com/*
-// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @grant        none
 // ==/UserScript==
 
