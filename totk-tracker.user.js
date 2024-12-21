@@ -1,11 +1,16 @@
 // ==UserScript==
 // @name         Zelda Spoilerfree Interactive Map
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Adds a modal to check off a Waypoint with coordinates
-// @author       Metasion
+// @author       Rumo
+// @homepageURL  https://github.com/ItsRumo/userscripts
+// @homepage     https://github.com/ItsRumo/userscripts
+// @supportURL   https://github.com/ItsRumo/userscripts/issues
+// @downloadURL  https://github.com/ItsRumo/userscripts/master/totk-tracker.user.js
+// @updateURL    https://github.com/ItsRumo/userscripts/master/totk-tracker.user.js
 // @match        https://www.zeldadungeon.net/tears-of-the-kingdom-interactive-map/*
-// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=zeldadungeon.net
 // @grant        none
 // ==/UserScript==
 
