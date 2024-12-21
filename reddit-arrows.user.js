@@ -4,6 +4,11 @@
 // @version      1.0
 // @description  Allow arrowkeys to control reddit gallery
 // @author       Rumo
+// @homepageURL  https://github.com/ItsRumo/userscripts
+// @homepage     https://github.com/ItsRumo/userscripts
+// @supportURL   https://github.com/ItsRumo/userscripts/issues
+// @downloadURL  https://github.com/ItsRumo/userscripts/master/reddit-arrows.user.js
+// @updateURL    https://github.com/ItsRumo/userscripts/master/reddit-arrows.user.js
 // @match        http*://*.reddit.com/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
