@@ -4,11 +4,11 @@
 // @version      2024-12-20
 // @description  Indicates which digital books you own inside the shop
 // @author       Rumo
-// @homepageURL  https://github.com/itsRumo/userscripts
-// @homepage     https://github.com/itsRumo/userscripts
-// @supportURL   https://github.com/itsRumo/userscripts/issues
-// @downloadURL  https://github.com/itsRumo/userscripts/master/you-own-ddb.user.js
-// @updateURL    https://github.com/itsRumo/userscripts/master/you-own-ddb.user.js
+// @homepageURL  https://github.com/ItsRumo/userscripts
+// @homepage     https://github.com/ItsRumo/userscripts
+// @supportURL   https://github.com/ItsRumo/userscripts/issues
+// @downloadURL  https://github.com/ItsRumo/userscripts/master/you-own-ddb.user.js
+// @updateURL    https://github.com/ItsRumo/userscripts/master/you-own-ddb.user.js
 // @match        https://marketplace.dndbeyond.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=dndbeyond.com
 // @grant        GM_setValue
