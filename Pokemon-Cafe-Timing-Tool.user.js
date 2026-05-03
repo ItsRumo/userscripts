@@ -16,7 +16,6 @@
 
     function needsReload() {
         // return document.head.querySelector("link[data-turbolinks-track=reload]") !== null;
-        console.log(window.performance.getEntriesByType("navigation")[0])
         let status = window.performance.getEntriesByType("navigation")[0].responseStatus;
         return status >= 500 && status < 600;
         //return document.body.querySelector("h3.page-english-title").textContent.includes("congested");
@@ -196,11 +195,10 @@
     }
 
     function ready(callback) {
-        console.log(document.readyState);
         if (document.readyState !== "loading") {
             callback();
         } else {
-            console.log(document, window.addEventListener("DOMContentLoaded", callback));
+            window.addEventListener("DOMContentLoaded", callback);
         }
     }
 
