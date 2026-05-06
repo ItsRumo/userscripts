@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         Pokemon Cafe Timing Tool
 // @namespace    http://tampermonkey.net/
-// @version      2026-05-01
+// @version      1.0.0
 // @description  Optimizes the timing of actions when making a reservation
 // @author       Rumo
 // @match        https://*.pokemon-cafe.jp
 // @match        https://*.pokemon-cafe.jp/reserve/step*
+// @match        https://osaka.pokemon-cafe.jp/reserve/reserve_temporary_confirm
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=pokemon-cafe.jp
-// @grant        none
+// @grant        GM.notification
 // @run-at       document-start
 // ==/UserScript==
 
@@ -15,11 +16,12 @@
     'use strict';
 
     function needsReload() {
-        // return document.head.querySelector("link[data-turbolinks-track=reload]") !== null;
         let status = window.performance.getEntriesByType("navigation")[0].responseStatus;
         return status >= 500 && status < 600;
+        // return document.head.querySelector("link[data-turbolinks-track=reload]") !== null;
         //return document.body.querySelector("h3.page-english-title").textContent.includes("congested");
     }
+
     if (needsReload()) {
         location.reload();
         return;
@@ -170,6 +172,7 @@
         checkbox.click();
 
         await until(instant);
+        GM.notification({highlight: true});
         let submit = document.querySelector(".button-container-agree button");
         submit.click();
     }
@@ -182,7 +185,12 @@
         let form = document.forms[1];
 
         let preheatInstant = instant.subtract(PREHEAT);
+        let grabber = preheatInstant.subtract({seconds: 10});
         console.log(`Will warm-up socket in ${prettyUntil(preheatInstant)}`);
+
+        await until(grabber);
+        if (!document.hasFocus)
+        GM.notification({highlight: true});
         await until(preheatInstant);
         let delay = await Promise.race([
             preheatSocket(`${location.protocol}//${location.hostname}`),
@@ -190,7 +198,7 @@
         ]);
 
         await until(instant.subtract({milliseconds: Math.min(PREFIRE, delay)}));
-        console.log(`Form submitted at ${Temporal.Now.instant()}`);
+        console.log(`Form submitted at ${Temporal.Now.instant()} with min(${PREFIRE}, ${delay}) = ${Math.min(PREFIRE, delay)}`);
         form.submit();
     }
 
@@ -257,8 +265,9 @@
             `For windows: sync the local clock using: Win + R > timedate.cpl > Internet Time > Change settings... > Update now`
         ]
     };
-    if (!("rumoTT" in window)) {
-        window.rumoTT = rumoTT;
+
+    if (!("rumoTT" in unsafeWindow)) {
+        unsafeWindow.rumoTT = rumoTT;
     }
 
 
@@ -267,7 +276,7 @@
         if (DEBUG) {
             chance = Temporal.Now.instant().add({minutes: 3, seconds: 30}).toZonedDateTimeISO(TIMEZONE).with({second: 0, millisecond: 0, nanosecond: 0});
         }
-        let login = chance.subtract({minutes: 3});
+        let login = chance.subtract({minutes: 4});
 
         const strategy = (slots => pickRandom(preferArea(slots, "ABC")));
 
